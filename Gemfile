@@ -43,4 +43,6 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-gem 'surveyor', '~> 1.4.0'
+# gem 'surveyor', '~> 1.4.0'
+
+gem 'sorcery', '~> 0.8.5'
