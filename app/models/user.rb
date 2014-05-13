@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  has_many :answers
+  has_many :questions, through: :answers
+  	
   authenticates_with_sorcery!
 
   validates :password, length: {minimum: 6}
