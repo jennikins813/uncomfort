@@ -46,3 +46,5 @@ end
 # gem 'surveyor', '~> 1.4.0'
 
 gem 'sorcery', '~> 0.8.5'
+
+gem 'cancancan', '~> 1.8.0'

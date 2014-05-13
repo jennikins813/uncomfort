@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   skip_before_filter :require_login, only: [:index, :new, :create]
 
   def index
+    #@user = User.all 
   end
 
   def show
@@ -22,9 +23,14 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
+
   end
 
   def update
+    #if current_user != user.id
+    #  alert: "You can't do that!"
+    #end
   end
 
   def destroy
