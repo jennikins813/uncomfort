@@ -1,4 +1,8 @@
 Uncomfort::Application.routes.draw do
+root 'welcome#index'
+
+  get "results/show"
+  get "welcome/index"
   get "quizzes/index"
   get "quizzes/show"
   get "quizzes/new"
@@ -13,14 +17,14 @@ Uncomfort::Application.routes.draw do
 
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
-  root :to => 'users#index'
+  #root :to => 'users#index'
 
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
