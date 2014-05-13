@@ -1,4 +1,12 @@
 Uncomfort::Application.routes.draw do
+  get "quizzes/index"
+  get "quizzes/show"
+  get "quizzes/new"
+  post "quizzes/create"
+  get "quizzes/edit"
+  get "quizzes/update"
+  get "quizzes/destroy"
+  
   resources :user_sessions
   
   resources :users

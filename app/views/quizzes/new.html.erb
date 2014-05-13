@@ -1,0 +1,15 @@
+<h1>Uncomfort Yourself</h1>
+<%= form_for @quiz, url: quizzes_create_path(@quiz) do |f| %>
+<p class="question">1. What is the answer to this question?</p>        
+
+<ul class="answers">            
+<input type="radio" name="q1" value="a" id="q1a"><label for="q1a">Very Bothered</label><br/>          
+<input type="radio" name="q1" value="b" id="q1b"><label for="q1b">Slightly Bothered</label><br/>            
+<input type="radio" name="q1" value="c" id="q1c"><label for="q1c">Not Bothered</label><br/>            
+      
+</ul> 
+
+<div id="results">
+<%= f.submit "Show me the answers!" %>       
+</div> 
+<% end %>
