@@ -1,8 +1,8 @@
 Uncomfort::Application.routes.draw do
-root 'welcome#index'
+  #get "welcome/index"
+  root 'welcome#index'
 
   get "results/show"
-  get "welcome/index"
   get "quizzes/index"
   get "quizzes/show"
   get "quizzes/new"

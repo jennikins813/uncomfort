@@ -1,7 +1,9 @@
 <html>
 	<head>
 		<script type="text/javascript" src="/js/jquery.js"></script>
-		<script type="text/javascript" src="/js/quizzes.js.erb"></script>
+		<script type="text/javascript" src="/js/quiz.js.erb"></script>
+		<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript" href="quiz.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	</head>
 
 <body>
@@ -11,7 +13,7 @@
 <p class="question">1. What is the answer to this question?</p>        
 
 <div>
-<ul class="answers">            
+<ul class="answers">           
 <input type="radio" name="q1" value="2" id="q1a"><label for="q1a">Very Bothered</label><br/>          
 <input type="radio" name="q1" value="1" id="q1b"><label for="q1b">Slightly Bothered</label><br/>            
 <input type="radio" name="q1" value="0" id="q1c"><label for="q1c">Not Bothered</label><br/>              
@@ -129,7 +131,11 @@
 
 <div id="results">
 <%= f.submit "Show me my Results!" %>       
-</div> 
+</div>  
+
+
+<!-- <input type="button" id='next' value= 'next' onclick= "sum_values()"> -->
+
 <% end %>
 </body>
 </html>
