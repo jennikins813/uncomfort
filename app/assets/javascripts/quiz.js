@@ -1,9 +1,9 @@
-/* $(document).ready(function() {      
+ $(document).ready(function() {      
  answers = new Object();
  $('.answers').change(function(){
- 	var answer = ($(this).attr('value'))
- 	var question = ($(this).attr('name'))
- 	answers[question] = answer
+   var answer = ($(this).attr('value'))
+   var question = ($(this).attr('name'))
+   answers[question] = answer
  })
 
 var item1 = document.getElementById('question');
@@ -18,8 +18,10 @@ $('#next').click(function(){
         currentQuestion = currentQuestion + 1;
         if(currentQuestion == totalQuestions){
                var result = sum_values()
+              
+
                //do stuff with the result
-               alert(result);
+               // alert(result);
         }else{
         $($questions.get(currentQuestion)).fadeIn();
         }
@@ -27,13 +29,22 @@ $('#next').click(function(){
 
  });
 });  
-
+$('.question').each(function(){
+ var totalPoints = 0;
+ $(this).find('input').each(function (){
+  totalPoints += $(this).val();
+});
+alert(totalPoints);
+});
 
 function sum_values(){
 var the_sum = 0;
 for (questions in answers){
-    the_sum = the_sum + parseInt(answers[question])
+    the_sum = the_sum + parseInt(answers['.question'])
 }
-return the_sum
-} */
+ return the_sum
+} 
+
+
+
 
