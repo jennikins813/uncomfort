@@ -18,8 +18,8 @@ $('#next').click(function(){
         currentQuestion = currentQuestion + 1;
         if(currentQuestion == totalQuestions){
                var result = sum_values()
+              
 
-               
                //do stuff with the result
                // alert(result);
         }else{
@@ -29,7 +29,13 @@ $('#next').click(function(){
 
  });
 });  
-
+$('.question').each(function(){
+ var totalPoints = 0;
+ $(this).find('input').each(function (){
+  totalPoints += $(this).val();
+});
+alert(totalPoints);
+});
 
 function sum_values(){
 var the_sum = 0;
