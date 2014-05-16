@@ -29,22 +29,26 @@ $('#next').click(function(){
 
  });
 });  
-$('.question').each(function(){
- var totalPoints = 0;
- $(this).find('input').each(function (){
-  totalPoints += $(this).val();
-});
-alert(totalPoints);
-});
+// $('.question').each(function(){
+//  var totalPoints = 0;
+//  $(this).find('input').each(function (){
+//   totalPoints += $(this).val();
+// });
+// alert(totalPoints);
+// });
+
+// function sum_values(){
+// var the_sum = 0;
+//  for (questions in answers){
+//     the_sum = the_sum + parseInt(answers['.question'])
+//  }
+//  return the_sum
+// } 
 
 function sum_values(){
-var the_sum = 0;
-for (questions in answers){
-    the_sum = the_sum + parseInt(answers['.question'])
+for (var i = 0; i < answers.length; i++){
+  var results = parseInt(answers.getElementById).sum
 }
- return the_sum
-} 
-
-
-
+return results 
+}
 
