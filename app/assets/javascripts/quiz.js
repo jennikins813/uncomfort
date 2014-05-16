@@ -1,55 +1,35 @@
- $(document).ready(function() {      
- answers = new Object();
- $('.answers').change(function(){
-   var answer = ($(this).attr('value'))
-   var question = ($(this).attr('name'))
-   answers[question] = answer
- })
-
-var item1 = document.getElementById('question');
-
-var totalQuestions = $('.question').size(15);
-var currentQuestion = 0;
-$questions = $('.question');
-$questions.hide();
-$($questions.get(currentQuestion)).fadeIn();
-$('#next').click(function(){
-    $($questions.get(currentQuestion)).fadeOut(function(){
-        currentQuestion = currentQuestion + 1;
-        if(currentQuestion == totalQuestions){
-               var result = sum_values()
-              
-
-               //do stuff with the result
-               return result;
-        }else{
-        $($questions.get(currentQuestion)).fadeIn();
-        }
+$(document).ready(function () {
+    answers = new Object();
+    $('.answers').change(function () {
+        var answer = ($(this).attr('value'));
+        var question = ($(this).attr('name'));
+        answers[question] = answer;
     });
 
- });
-});  
-$('.question').each(function(){
- var totalPoints = 0;
- $(this).find('input').each(function (){
-  totalPoints += $(this).val();
+    var totalQuestions = $('.question').size();
+    var currentQuestion = 0;
+    $questions = $('.question');
+    $questions.hide();
+    $($questions.get(currentQuestion)).fadeIn();
+
+    function sum_values() {
+        var the_sum = 0;
+        for (question in answers) {
+            the_sum = the_sum + parseInt(answers[question]);
+        }
+        return the_sum;
+    }
+
+    $('#next').click(function () {
+        $($questions.get(currentQuestion)).fadeOut(function () {
+            currentQuestion = currentQuestion + 1;
+            if (currentQuestion === totalQuestions) {
+                var result = sum_values();
+                alert(result);
+            } else {
+                $($questions.get(currentQuestion)).fadeIn();
+            }
+        });
+    });
 });
-alert(totalPoints);
-});
-
-
-
-
-  //var fid, elem;
-
-    //fid = 'fruit'+i;
-    //elem = document.getElementById(fid);
-    //if (elem.checked == true) { sum += Number(elem.value); }
-  
-  //document.getElementById('totalcost').value = sum.toFixed(2)*1.05;
-  //alert("Your Total Is:" + totalcost.value);
- 
-
-
-
 
