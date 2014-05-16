@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_filter :require_login, only: [:index, :new, :create]
+  skip_before_filter :require_login, only: [:index, :new, :create, :update]
 
   def index
     #@user = User.all 
@@ -7,6 +7,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+
+    if current_user
+      @profile = @user.profile
+    end
   end
 
   def new
@@ -25,13 +29,19 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-
   end
 
   def update
     #if current_user != user.id
     #  alert: "You can't do that!"
     #end
+    @user = User.find(params[:id])
+
+    if current_user.update_attributes(user_params)
+      redirect_to user_path(@user), :notice => "User Info Updated!"
+    else
+      render 'edit'
+    end
   end
 
   def destroy
