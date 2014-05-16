@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   has_many :answers
   has_many :questions, through: :answers
+  has_one :result
+  has_one :profile
+  accepts_nested_attributes_for :profile
   	
   authenticates_with_sorcery!
 

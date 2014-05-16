@@ -1,4 +1,39 @@
 <h1>Results</h1>
-<p>Result1</p>
-<p>Result2</p>
-<p>Result3</p>
+
+<% result = 24 %>
+<% if result > 20 %>
+<%=	"You're a creature of comfort." %>
+<% elsif result > 10 %>
+<%=	"You're on edge." %>
+<% else %>
+<%=	"You're free from fear." %>
+<% end %>
+<br>
+
+<% physical_result = 4 %>
+<% if physical_result > 7 %>
+<%= "You have significant physical fears." %>
+<% else %>
+<%= "Your physical fears are minimal." %>
+<% end %>
+<br>
+
+<% emotional_result = 9 %>
+<% if emotional_result > 8 %>
+<%= "You have significant emotional fears." %>
+<% else %>
+<%= "Your emotional fears are minimal." %>
+<% end %>
+<br>
+
+<% type_result = emotional_result - physical_result %>
+<% if type_result > 4 %>
+<%= "You have more emotional fears than physical fears." %>
+<% elsif type_result > -2 %>
+<%= "You have a similar amount of both physical and emotional fears." %>
+<% else %>
+<%= "You have more physical fears than emotional fears." %>
+<% end %>
+<br>
+
+<p> We might be able to help. Maybe you should <%= link_to "sign up", "/users/new" %>! </p>
