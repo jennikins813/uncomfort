@@ -21,7 +21,7 @@ $('#next').click(function(){
               
 
                //do stuff with the result
-               // alert(result);
+               return result;
         }else{
         $($questions.get(currentQuestion)).fadeIn();
         }
@@ -37,13 +37,18 @@ $('.question').each(function(){
 alert(totalPoints);
 });
 
-function sum_values(){
-var the_sum = 0;
-for (questions in answers){
-    the_sum = the_sum + parseInt(answers['.question'])
-}
- return the_sum
-} 
+
+
+
+  //var fid, elem;
+
+    //fid = 'fruit'+i;
+    //elem = document.getElementById(fid);
+    //if (elem.checked == true) { sum += Number(elem.value); }
+  
+  //document.getElementById('totalcost').value = sum.toFixed(2)*1.05;
+  //alert("Your Total Is:" + totalcost.value);
+ 
 
 
 

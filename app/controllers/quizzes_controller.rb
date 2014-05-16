@@ -19,10 +19,13 @@ class QuizzesController < ApplicationController
     @quiz = Quiz.new(params[:quiz])
     if @quiz.save
       flash[:notice] = "Successfully submitted Quiz"
-      redirect_to results_show_path
+      #redirect_to results_show_path
     else
       render :action => 'new'
     end
+
+    user_answer = @quiz.questions.answers(params[:content])
+    result = user_answer
 
     respond_to do |format|
       if @quiz.save

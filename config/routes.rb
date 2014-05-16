@@ -10,6 +10,7 @@ Uncomfort::Application.routes.draw do
   get "quizzes/edit"
   get "quizzes/update"
   get "quizzes/destroy"
+
   
   resources :user_sessions
   
