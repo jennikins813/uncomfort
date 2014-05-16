@@ -1,54 +1,34 @@
- $(document).ready(function() {      
- answers = new Object();
- $('.answers').change(function(){
-   var answer = ($(this).attr('value'))
-   var question = ($(this).attr('name'))
-   answers[question] = answer
- })
-
-var item1 = document.getElementById('question');
-
-var totalQuestions = $('.question').size(15);
-var currentQuestion = 0;
-$questions = $('.question');
-$questions.hide();
-$($questions.get(currentQuestion)).fadeIn();
-$('#next').click(function(){
-    $($questions.get(currentQuestion)).fadeOut(function(){
-        currentQuestion = currentQuestion + 1;
-        if(currentQuestion == totalQuestions){
-               var result = sum_values()
-              
-
-               //do stuff with the result
-               // alert(result);
-        }else{
-        $($questions.get(currentQuestion)).fadeIn();
-        }
+$(document).ready(function () {
+    answers = new Object();
+    $('.answers').change(function () {
+        var answer = ($(this).attr('value'));
+        var question = ($(this).attr('name'));
+        answers[question] = answer;
     });
 
- });
-});  
-// $('.question').each(function(){
-//  var totalPoints = 0;
-//  $(this).find('input').each(function (){
-//   totalPoints += $(this).val();
-// });
-// alert(totalPoints);
-// });
+    var totalQuestions = $('.question').size();
+    var currentQuestion = 0;
+    $questions = $('.question');
+    $questions.hide();
+    $($questions.get(currentQuestion)).fadeIn();
 
-// function sum_values(){
-// var the_sum = 0;
-//  for (questions in answers){
-//     the_sum = the_sum + parseInt(answers['.question'])
-//  }
-//  return the_sum
-// } 
+    function sum_values() {
+        var the_sum = 0;
+        for (question in answers) {
+            the_sum = the_sum + parseInt(answers[question]);
+        }
+        return the_sum;
+    }
 
-function sum_values(){
-for (var i = 0; i < answers.length; i++){
-  var results = parseInt(answers.getElementById).sum
-}
-return results 
-}
-
+    $('#next').click(function () {
+        $($questions.get(currentQuestion)).fadeOut(function () {
+            currentQuestion = currentQuestion + 1;
+            if (currentQuestion === totalQuestions) {
+                var result = sum_values();
+                alert(result);
+            } else {
+                $($questions.get(currentQuestion)).fadeIn();
+            }
+        });
+    });
+});
