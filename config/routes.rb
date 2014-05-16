@@ -18,6 +18,11 @@ Uncomfort::Application.routes.draw do
 
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
+
+  get '/application/about' => 'application#about'
+  get '/application/contact' => 'application#contact'
+  get '/application/faq' => 'application#faq'
+
   #root :to => 'users#index'
 
   resources :users do
