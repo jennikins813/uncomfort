@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
-  before_filter :ensure_logged_in
+  #before_filter :ensure_logged_in
+  before_filter :require_login
   before_filter :get_user
 
   def index

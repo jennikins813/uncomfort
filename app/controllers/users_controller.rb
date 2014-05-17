@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_filter :require_login, only: [:index, :new, :create, :update]
+  #skip_before_filter :require_login, only: [:new, :create, :edit, :update]
 
   def index
     #@user = User.all 
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
     if current_user.update_attributes(user_params)
       redirect_to user_path(@user), :notice => "User Info Updated!"
     else
-      render 'edit'
+      render :edit
     end
   end
 
