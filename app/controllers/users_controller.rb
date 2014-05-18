@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       auto_login(@user)
-      redirect_to root_path, :notice => "Signed Up!"
+      redirect_to root_path, :notice => "Signed Up!" ##Need to redirect to edit profile
     else
       render :new
     end
@@ -39,6 +39,7 @@ class UsersController < ApplicationController
 
     if current_user.update_attributes(user_params)
       redirect_to user_path(@user), :notice => "User Info Updated!"
+      #redirect_to new_user_profile_path(current_user.id), :notice => "User Info Updated!"
     else
       render :edit
     end

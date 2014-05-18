@@ -1,5 +1,6 @@
 <h1>Edit Profile</h1>
-<%= form_for([@user,@profile], :url => user_profile_path) do |f|%>
+<!-- form_for @profile, :url => edit_user_profile_path do |f| -->
+<%= form_for @profile, url: {action: "update"}, method: :patch do |f| %>
 
 	<div class="field">
 		<%= f.label :name %><br>
@@ -11,13 +12,18 @@
 		<%= f.text_field :photo %>
 	</div>
 
-		<div class="field">
+	<div class="field">
+		<%= f.label :photo %><br>
+		<%= f.text_field :photo %>
+	</div>
+
+	<div class="field">
 		<%= f.label :bio %><br>
 		<%= f.text_area :bio %>
 	</div>
 
 	<div class="field">
-		<%= f.label :website %><br>
+		<%= f.label :Connect_with_me %><br>
 		<%= f.text_field :website %>
 	</div>
 	
@@ -25,10 +31,8 @@
 		<%= f.submit %>
 	</div>
 
-
 <% end %>	
 
-
-
 <b><%= link_to "Back", root_url %></b> |
-
+<b><%= link_to "UserProfile", user_path(current_user.id) %> </b>
+	

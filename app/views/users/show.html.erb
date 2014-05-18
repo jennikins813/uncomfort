@@ -13,3 +13,7 @@
  
 <b><%= link_to "Back", root_url %></b> |
 <b><%= link_to "Edit User", edit_user_path(current_user.id) %></b> |
+<b><%= link_to "Edit Profile", edit_user_profile_path(current_user.id, @profile.id) %></b> |	
+<!-- <b> link_to "Edit Profile", edit_user_profile_path(current_user.id, @profile.id)</b> |	-->
+<!-- <b> link_to "Edit Profile", [:edit, @profile, @user] </b> | -->
+<!--<b> link_to "Edit Profile", "/users/:user_id/profiles/:id/edit" %> </b> -->

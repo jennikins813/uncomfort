@@ -11,23 +11,21 @@ Uncomfort::Application.routes.draw do
   get "quizzes/update"
   get "quizzes/destroy"
 
-  
-  resources :user_sessions
-  
   resources :users
+  resources :user_sessions
 
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
+
+  resources :users do
+    resources :profiles
+  end
 
   get '/application/about' => 'application#about'
   get '/application/contact' => 'application#contact'
   get '/application/faq' => 'application#faq'
 
   #root :to => 'users#index'
-
-  resources :users do
-    resources :profiles
-  end
 
   
   # The priority is based upon order of creation: first created -> highest priority.
