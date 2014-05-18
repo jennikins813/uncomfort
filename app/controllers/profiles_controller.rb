@@ -19,7 +19,6 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    #@profile = Profile.new(profile_params)
     @profile = @user.profiles.build(profile_params)
     @profile.user_id = current_user.id
 
@@ -31,14 +30,12 @@ class ProfilesController < ApplicationController
 
   def edit
     @profile=Profile.find(params[:id])
-    #current_user
   end
 
   def update
     @user = User.find(params[:user_id])
 
     if @user.profile(params[:id]).update(profile_params)
-    #if @user.update_attributes(params[:user])
       redirect_to user_profile_path, :notice => "Profile updated!"
     else
     end
@@ -55,6 +52,5 @@ class ProfilesController < ApplicationController
 
   def get_user
     current_user
-    #redirect_to login_path unless current_user
   end
 end

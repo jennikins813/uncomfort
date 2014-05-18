@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   #skip_before_filter :require_login, only: [:new, :create, :edit, :update]
 
   def index
-    #@user = User.all 
   end
 
   def show
@@ -21,7 +20,7 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       auto_login(@user)
-      redirect_to root_path, :notice => "Signed Up!" ##Need to redirect to edit profile
+      redirect_to root_path, :notice => "Signed Up!" 
     else
       render :new
     end
@@ -32,14 +31,10 @@ class UsersController < ApplicationController
   end
 
   def update
-    #if current_user != user.id
-    #  alert: "You can't do that!"
-    #end
     @user = User.find(params[:id])
 
     if current_user.update_attributes(user_params)
       redirect_to user_path(@user), :notice => "User Info Updated!"
-      #redirect_to new_user_profile_path(current_user.id), :notice => "User Info Updated!"
     else
       render :edit
     end
