@@ -14,9 +14,9 @@
 		<%= link_to "FAQ", application_faq_path %> |
 
 		<% if current_user %>
-			<%= link_to "UserProfile", user_path(current_user.id) %> |
+			<%= link_to "User's Page", user_path(current_user.id) %> |
 		 	<%= link_to "Logout", :logout, method: :post %>
-		 	<h3>Hello, <%= link_to current_user.name, user_path(current_user.id) %></h3> 	
+		 	<h3>Hello, <%= link_to current_user.name, user_path(current_user.id)%></h3> 	
 
 		<% else %>
 		  <%= link_to "Register", new_user_path%> |

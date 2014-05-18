@@ -10,7 +10,8 @@
 	<%= @user.email %>
 </p>
 
- 
+<div id="nav">
+<h2><%= link_to "Show Profile", user_profile_path(current_user.id, @profile.id) %></b> </h2>
 <b><%= link_to "Back", root_url %></b> |
 <b><%= link_to "Edit User", edit_user_path(current_user.id) %></b> |
-<b><%= link_to "Show Profile", user_profile_path(current_user.id, @profile.id) %></b> |		
+</div>
