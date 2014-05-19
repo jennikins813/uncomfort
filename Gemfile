@@ -52,3 +52,5 @@ group :development do
 end
 
 gem 'carrierwave'
+
+gem 'acts-as-taggable-on'
