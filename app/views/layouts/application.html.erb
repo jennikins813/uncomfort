@@ -9,7 +9,10 @@
 <body>
 	<div id="nav">
 		<%= link_to "Home", root_path %>
-		
+		<%= link_to "About", application_about_path %>
+		<%= link_to "Contact", application_contact_path %>
+		<%= link_to "FAQ", application_faq_path %>
+
 		<% if current_user %>
 		  <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
 		  <%= link_to "Logout", :logout, method: :post %>
@@ -17,10 +20,6 @@
 		  <%= link_to "Register", new_user_path%> |
 		  <%= link_to "Login", :login %>
 		<% end %>
-	</div>
-
-	<div id="navbar">
-		
 	</div>
 
 	<div >
