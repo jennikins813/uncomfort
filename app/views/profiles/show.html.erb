@@ -1,29 +1,30 @@
 <h1>Profile Spolight</h1>
 
-<p>
-	<b>User Name:</b>
-	<%= @profile.name %>
-</p>
+<div class="profile">
+	<p>
+		<b>User Name:</b>
+		<%= @profile.name %>
+	</p>
 
-<p>
-	<b>Email:</b>
-	<%= current_user.email %>
-</p>
+	<p>
+		<b>Name:</b>
+		<%= current_user.name %>
+	</p>
 
-<p>
-	<b>Photo:</b>
-	<%= @profile.photo %>
-</p>
+	<p>
+		<%= image_tag(@profile.photo_url, :width => 300) if @profile.photo.present? %>
+	</p>
 
-<p>
-	<b>Bio:</b>
-	<p><%= @profile.bio %></p>
-</p>
+	<p>
+		<b>Bio:</b>
+		<p><%= @profile.bio %></p>
+	</p>
 
-<p>
-	<b>Website:</b>
-	<%= @profile.website %>
-</p>
+	<p>
+		<b>Website:</b>
+		<%= @profile.website %>
+	</p>
+</div>
 
 <div id="nav">
 	<b><%= link_to "Back", root_url %></b> |

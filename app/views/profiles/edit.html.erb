@@ -7,13 +7,15 @@
 	</div>
 
 	<div class="field">
+	<%= f.fields_for :profile do |profile| %> <!-- keep this line for noe -->
 		<%= f.label :photo %><br>
-		<%= f.text_field :photo %>
-	</div>
-
-	<div class="field">
-		<%= f.label :photo %><br>
-		<%= f.text_field :photo %>
+		<%= image_tag(@profile.photo_url, :width => 300) if @profile.photo.present? %>
+		<%= f.file_field :photo %>
+		<p>
+			<%= f.check_box :remove_photo %>
+			<%= f.label :remove_photo, "Remove Photo" %>
+		</p>
+	<% end %>
 	</div>
 
 	<div class="field">
@@ -34,5 +36,5 @@
 
 <div id="nav">
 <b><%= link_to "Back", root_url %></b> |
-<b><%= link_to "UserProfile", user_path(current_user.id) %> </b>
+<b><%= link_to "User's Page", user_path(current_user.id) %> </b>
 </div>	
