@@ -26,7 +26,13 @@ $(document).ready(function () {
             if (currentQuestion === totalQuestions) {
                 var result = sum_values();
                 //alert(result);
-                window.location.assign('/results/show')
+                // window.location.assign('/results/show')
+                $.ajax({
+                    url: '/results',
+                    data: {result: {score: result}}
+                    dataType: "html",
+                    method: "POST",
+                })
             } else {
                 $($questions.get(currentQuestion)).fadeIn();
             }
