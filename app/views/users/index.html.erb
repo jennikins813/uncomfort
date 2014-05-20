@@ -1,12 +1,11 @@
 <h1>User Index</h1>
 <p> <%= link_to "Quiz", "/quizzes/new" %> </p>
 
-<!-- % @users.in_groups_of(2) do |group| %> -->
-<div id="users">
-<% for user in @users %>
-</div>
+<!-- <div id="users">
+< for user in @users %>
+</div> -->
 	<div class="users">
-	<% User.all.each do |user|%>
+	<% User.all.each do |user| %>
 	<ul>
 	<b><%=h user.name %></b>
 	<%= link_to "Add Friend", friendships_path(friend_id: user), method: :post %>
@@ -17,7 +16,6 @@
 		<p><b>Tags:</b>
 			<%= current_user.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe %></p>
 	</div>		
-<%= link_to current_user.name, user_path(current_user.id) %>
-	
 
-<% end %>	
+
+<%= link_to current_user.name, user_path(current_user.id) %>
