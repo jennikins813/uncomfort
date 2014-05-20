@@ -9,6 +9,7 @@ class QuizzesController < ApplicationController
 
   def new
     @quiz = Quiz.new
+    @result = Result.new
     15.times do 
       question = @quiz.questions.build
       3.times { question.answers.build }

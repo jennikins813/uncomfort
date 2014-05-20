@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    
     answers = new Object();
     $('.answers').change(function () {
         var answer = ($(this).attr('value'));
@@ -25,14 +26,7 @@ $(document).ready(function () {
             currentQuestion = currentQuestion + 1;
             if (currentQuestion === totalQuestions) {
                 var result = sum_values();
-                //alert(result);
-                // window.location.assign('/results/show')
-                $.ajax({
-                    url: '/results',
-                    data: {result: {score: result}}
-                    dataType: "html",
-                    method: "POST",
-                })
+                $('#result_score').val(result);
             } else {
                 $($questions.get(currentQuestion)).fadeIn();
             }
