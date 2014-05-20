@@ -1,2 +1,19 @@
 <h1>Profiles#index</h1>
-<p>Find me in app/views/profiles/index.html.erb</p>
+
+<div class="profile">
+	<p>
+		<b>User Name:</b>
+		<%= @profiles.name %>
+	</p>
+
+	<p>
+		<b>Name:</b>
+		<%= current_user.name %>
+	</p>
+
+	<p>
+		<%= image_tag(@profile.photo_url, :width => 300) if @profile.photo.present? %>
+	</p>
+
+	<p><b>Tags:</b>
+		<%= @profile.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe %></p>

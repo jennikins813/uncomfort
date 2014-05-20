@@ -21,6 +21,8 @@ Uncomfort::Application.routes.draw do
     resources :profiles
   end
 
+  get 'tags/:tag', to: 'profiles#index', as: :tag
+
   get '/application/about' => 'application#about'
   get '/application/contact' => 'application#contact'
   get '/application/faq' => 'application#faq'

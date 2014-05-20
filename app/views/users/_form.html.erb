@@ -1,8 +1,16 @@
-<%= form_for @user do |f| %>
+<%= form_for @user, html: {multipart: true} do |f| %>
 
 <div class="field">
 	<%= f.label :name %>
 	<%= f.text_field :name%>
+</div>
+
+<div class="field">
+	<%= f.label :photo %><br>
+	<%= image_tag(@user.image_url, :width => 300) if @user.image.present? %> <br />
+	<%= f.file_field :image %><br />
+		<%= f.check_box :remove_image %>
+		<%= f.label :remove_image, "Remove Image" %>
 </div>
 
 <div class="field">
@@ -26,6 +34,10 @@
 <%end%>
 
 <div id="nav">
-<b><%= link_to "Back", root_url %></b> |
-<b><%= link_to "Users Page", user_path(current_user.id) %></b>
+<% if current_user %>
+	<b><%= link_to "Users Page", user_path(current_user.id) %></b> |
+	<b><%= link_to "Back", root_url %></b> |
+<% else %>
+	<b><%= link_to "Back", root_url %></b>
+<% end %>
 </div>

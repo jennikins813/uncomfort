@@ -2,14 +2,11 @@ class UsersController < ApplicationController
   #skip_before_filter :require_login, only: [:new, :create, :edit, :update]
 
   def index
+    @user = User.all
   end
 
   def show
     @user = User.find(params[:id])
-
-    if current_user
-      @profile = @user.profile
-    end
   end
 
   def new

@@ -15,8 +15,8 @@
 
 		<% if current_user %>
 			<%= link_to "User's Page", user_path(current_user.id) %> |
-		 	<%= link_to "Logout", :logout, method: :post %>
-		 	<h3>Hello, <%= link_to current_user.name, user_path(current_user.id)%></h3> 	
+		 	<%= link_to "Logout", :logout, method: :post %> | <br />
+		 	Logged in as, <b><%= link_to current_user.name, user_path(current_user.id)%></b>
 
 		<% else %>
 		  <%= link_to "Register", new_user_path%> |

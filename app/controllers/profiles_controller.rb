@@ -3,6 +3,8 @@ class ProfilesController < ApplicationController
   before_filter :get_user
 
   def index
+    @profiles = Profile.all
+
   end
 
   def show
@@ -29,14 +31,15 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    @profile=Profile.find(params[:id])
+    @profile = Profile.find(params[:id])
   end
 
   def update
     @user = User.find(params[:user_id])
 
     if @user.profile(params[:id]).update(profile_params)
-      redirect_to user_profile_path, :notice => "Profile updated!"
+      #redirect_to user_profile_path, :notice => "Profile updated!"
+      redirect_to user_profiles_path, :notice => "Profile updated!"
     else
     end
   end
@@ -47,7 +50,7 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:user_id, :name, :photo, :bio, :website, :remove_photo)
+    params.require(:profile).permit(:user_id, :name, :photo, :bio, :website, :remove_photo, :tag_list)
   end
 
   def get_user
