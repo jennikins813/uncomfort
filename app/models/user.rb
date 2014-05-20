@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   has_many :answers
   has_many :questions, through: :answers
   has_one :result
+  has_many :friendships
+  has_many :friends, :through => :friendships  
   #has_one :profile
   #accepts_nested_attributes_for :profile
   mount_uploader :image, ImageUploader

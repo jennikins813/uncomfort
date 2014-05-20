@@ -24,6 +24,19 @@
 	<%= current_user.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe %></p>
 </div>
 
+<div class="friends_list">
+<h2>Friends:</h2>
+<ul>
+	<% for friendship in @user.friendships %>
+		<li>
+			<%=h friendship.friend.name %>
+			(<%= link_to "remove", friendship, method: :delete %>)
+		</li>
+	<% end %>	
+</ul>
+	
+</div>
+
 <div id="nav">
 <b><%= link_to "Edit User Info", edit_user_path(current_user.id) %></b> |
 <b><%= link_to "Back", root_url %></b>
