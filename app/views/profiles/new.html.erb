@@ -1,6 +1,6 @@
 <h1>User Profile Page</h1>
 
-<%= form_for (@profile) do |f| %>
+<%= form_for @profile, html: {multipart: true} do |f| %>
 	
 	<div class="field">
 		<%= f.label :name %><br>
@@ -9,9 +9,8 @@
 
 	<div class="field">
 		<%= f.label :photo %><br>
-		<%= f.text_field :photo %>
+		<%= f.file_field :photo %>
 	</div>
-
 
 	<div class="field">
 		<%= f.label :bio %><br>

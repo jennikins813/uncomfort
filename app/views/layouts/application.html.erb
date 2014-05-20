@@ -8,15 +8,15 @@
 </head>
 <body>
 	<div id="nav">
-		<%= link_to "Home", root_path %>
-		<%= link_to "About", application_about_path %>
-		<%= link_to "Contact", application_contact_path %>
-		<%= link_to "FAQ", application_faq_path %>
+		<%= link_to "Home", root_path %> |
+		<%= link_to "About", application_about_path %> |
+		<%= link_to "Contact", application_contact_path %> |
+		<%= link_to "FAQ", application_faq_path %> |
 
 		<% if current_user %>
-			<%= link_to "UserProfile", user_path(current_user.id) %> |
-			
-		 	<%= link_to "Logout", :logout, method: :post %>
+			<%= link_to "User's Page", user_path(current_user.id) %> |
+		 	<%= link_to "Logout", :logout, method: :post %> | <br />
+		 	Logged in as, <b><%= link_to current_user.name, user_path(current_user.id)%></b>
 
 		<% else %>
 		  <%= link_to "Register", new_user_path%> |

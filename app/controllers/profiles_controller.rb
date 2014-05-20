@@ -1,14 +1,16 @@
 class ProfilesController < ApplicationController
-  before_filter :ensure_logged_in
+  before_filter :require_login
   before_filter :get_user
 
   def index
+    @profiles = Profile.all
+
   end
 
   def show
     @profile = Profile.find(params[:id])
     if current_user
-      render 'show'
+      render :show
     else
     end
   end
@@ -18,27 +20,27 @@ class ProfilesController < ApplicationController
     @profile = @user.profile.build
   end
 
-  def edit
-    @profile = Profile.find(params[:id])
-  end
-
   def create
     @profile = @user.profiles.build(profile_params)
     @profile.user_id = current_user.id
 
     if @profile.save
-      redirect_to root_url, :notice => "Profile Created!"
+      redirect_to user_profile_path, :notice => "Profile Created!"
     else
     end
+  end
+
+  def edit
+    @profile = Profile.find(params[:id])
   end
 
   def update
     @user = User.find(params[:user_id])
 
     if @user.profile(params[:id]).update(profile_params)
-      redirect_to user_profile_path, :notice => "Profile Updated!"
+      #redirect_to user_profile_path, :notice => "Profile updated!"
+      redirect_to user_profiles_path, :notice => "Profile updated!"
     else
-      render 'edit'
     end
   end
 
@@ -48,10 +50,10 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:user_id, :name, :photo, :bio, :website)
+    params.require(:profile).permit(:user_id, :name, :photo, :bio, :website, :remove_photo, :tag_list)
   end
 
   def get_user
-    @user = User.find(params[:user_id])
+    current_user
   end
 end

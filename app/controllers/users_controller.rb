@@ -1,16 +1,25 @@
 class UsersController < ApplicationController
-  skip_before_filter :require_login, only: [:index, :new, :create, :update]
+  before_filter :require_login
+  skip_before_filter :require_login, only: [:index, :new, :create]
 
   def index
-    #@user = User.all 
+    @users = User.all
+
+    if params[:tag]
+      @users = User.tagged_with(params[:tag]) #.order(:created_at).page(page)
+    else
+      @user = User.all #order(:created_at).page(page)
+    end
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user #User.find(params[:id])
 
-    if current_user
-      @profile = @user.profile
-    end
+    #if params[:tag]
+    #  @users = User.tagged_with(params[:tag]) #.order(:created_at).page(page)
+    #else
+    #  @user = User.all #order(:created_at).page(page)
+    #end
   end
 
   def new
@@ -21,7 +30,7 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       auto_login(@user)
-      redirect_to root_path, :notice => "Signed Up!"
+      redirect_to root_path, :notice => "Signed Up!" 
     else
       render :new
     end
@@ -32,15 +41,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    #if current_user != user.id
-    #  alert: "You can't do that!"
-    #end
     @user = User.find(params[:id])
 
     if current_user.update_attributes(user_params)
       redirect_to user_path(@user), :notice => "User Info Updated!"
     else
-      render 'edit'
+      render :edit
     end
   end
 
@@ -49,7 +55,7 @@ class UsersController < ApplicationController
 
   private 
   def user_params
-    params.require(:user).permit(:name, :image, :bio, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :image, :bio, :email, :password, :password_confirmation, :tag_list)
   end
 
   def not_authenticated

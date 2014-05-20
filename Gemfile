@@ -45,3 +45,12 @@ end
 gem 'sorcery', '~> 0.8.5'
 
 gem 'cancancan', '~> 1.8.0'
+
+group :development do
+	gem 'better_errors'
+	gem 'binding_of_caller'
+end
+
+gem 'carrierwave'
+
+gem 'acts-as-taggable-on'

@@ -1,5 +1,5 @@
 <h1>Edit Profile</h1>
-<%= form_for([@user,@profile], :url => user_profile_path) do |f|%>
+<%= form_for @profile, url: {action: "update"}, method: :patch do |f| %>
 
 	<div class="field">
 		<%= f.label :name %><br>
@@ -7,17 +7,29 @@
 	</div>
 
 	<div class="field">
+	<%= f.fields_for :profile do |profile| %> <!-- keep this line for noe -->
 		<%= f.label :photo %><br>
-		<%= f.text_field :photo %>
+		<%= image_tag(@profile.photo_url, :width => 300) if @profile.photo.present? %>
+		<%= f.file_field :photo %>
+		<p>
+			<%= f.check_box :remove_photo %>
+			<%= f.label :remove_photo, "Remove Photo" %>
+		</p>
+	<% end %>
 	</div>
 
-		<div class="field">
+	<div class="field">
 		<%= f.label :bio %><br>
 		<%= f.text_area :bio %>
 	</div>
 
 	<div class="field">
-		<%= f.label :website %><br>
+		<%= f.label :tag_list, "Tags (separated by commas)" %><br />
+		<%= f.text_area :tag_list %>
+	</div>
+
+	<div class="field">
+		<%= f.label :Connect_with_me %><br>
 		<%= f.text_field :website %>
 	</div>
 	
@@ -25,10 +37,9 @@
 		<%= f.submit %>
 	</div>
 
-
 <% end %>	
 
-
-
+<div id="nav">
 <b><%= link_to "Back", root_url %></b> |
-
+<b><%= link_to "User's Page", user_path(current_user.id) %> </b>
+</div>	
