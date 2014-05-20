@@ -1,5 +1,6 @@
 <h1><%= current_user.name %>'s Page</h1>
 
+<div class="profile">
 <p>
 	<b>Name:</b>
 	<%= @user.name %>
@@ -17,7 +18,11 @@
 <p>
 	<b>Comfort Bio:</b>
 	<%= @user.bio %>
-</p>
+</p>	
+
+<p><b>Tags:</b>
+	<%= current_user.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe %></p>
+</div>
 
 <div id="nav">
 <b><%= link_to "Edit User Info", edit_user_path(current_user.id) %></b> |

@@ -1,12 +1,25 @@
 class UsersController < ApplicationController
-  #skip_before_filter :require_login, only: [:new, :create, :edit, :update]
+  before_filter :require_login
+  skip_before_filter :require_login, only: [:index, :new, :create]
 
   def index
-    @user = User.all
+    @users = User.all
+
+    if params[:tag]
+      @users = User.tagged_with(params[:tag]) #.order(:created_at).page(page)
+    else
+      @user = User.all #order(:created_at).page(page)
+    end
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user #User.find(params[:id])
+
+    #if params[:tag]
+    #  @users = User.tagged_with(params[:tag]) #.order(:created_at).page(page)
+    #else
+    #  @user = User.all #order(:created_at).page(page)
+    #end
   end
 
   def new
@@ -42,7 +55,7 @@ class UsersController < ApplicationController
 
   private 
   def user_params
-    params.require(:user).permit(:name, :image, :bio, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :image, :bio, :email, :password, :password_confirmation, :tag_list)
   end
 
   def not_authenticated

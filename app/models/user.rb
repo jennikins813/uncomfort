@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   #accepts_nested_attributes_for :profile
   mount_uploader :image, ImageUploader
 
+  acts_as_taggable
+
   validates :password, length: {minimum: 6}
   validates :password, confirmation: true
   #validates :password_confirmation, presence: true
