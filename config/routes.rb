@@ -1,4 +1,6 @@
 Uncomfort::Application.routes.draw do
+  get "friendships/create"
+  get "friendships/destroy"
   #get "welcome/index"
   root 'welcome#index'
 
