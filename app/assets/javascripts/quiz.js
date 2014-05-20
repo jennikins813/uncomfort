@@ -25,7 +25,8 @@ $(document).ready(function () {
             currentQuestion = currentQuestion + 1;
             if (currentQuestion === totalQuestions) {
                 var result = sum_values();
-                alert(result);
+                //alert(result);
+                window.location.assign('/results/show')
             } else {
                 $($questions.get(currentQuestion)).fadeIn();
             }
