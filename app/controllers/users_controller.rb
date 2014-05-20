@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   skip_before_filter :require_login, only: [:index, :new, :create]
 
   def index
-    @users = User.all
+    #@users = User.all
 
     if params[:tag]
       @users = User.tagged_with(params[:tag]) #.order(:created_at).page(page)
