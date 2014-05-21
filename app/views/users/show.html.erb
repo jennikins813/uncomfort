@@ -11,12 +11,13 @@
 </div>
 
 <div class="tags">
-	<p><b>Tags:</b>
+	<p><b>Interests:</b>
+		<br />
 		<%= @user.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe %></p>
 </div>	
 
 <div class="friends_list">
-	<h3>Friends:</h3>
+	<h3>Following:</h3>
 	<ul>
 		<% for friendship in @user.friendships %>
 			<li>
@@ -28,7 +29,7 @@
 
 	<p><b><%= link_to "Find Friends", users_path %></b></p>	
 
-	<h3>Friended by Users</h3>
+	<h3>Followers:</h3>
 	<ul>
 		<% for user in @user.inverse_friends %>
 			<li><%=h user.name %></li>
@@ -69,7 +70,7 @@
 			</div>
 
 		<% end %>		
-		
+
 	<% else %>
 		<p>Please <%= link_to "Log in", new_user_session_path %> to add a comment. </p>
 	<% end %>

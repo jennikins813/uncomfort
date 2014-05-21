@@ -15,7 +15,9 @@
 		<%= link_to h user_path(user.id) do %>
 		<ul>
 		<b><%= user.name %></b>	
-		  <p>Tags: <%= user.tag_list.map {|t| link_to t, tag_path(t)}.join(', ').html_safe %></p>
+		  <p><b>Interests:</b>
+			<br />
+		 	<%= user.tag_list.map {|t| link_to t, tag_path(t)}.join(', ').html_safe %></p>
 		<%= button_to "Add Friend", friendships_path(friend_id: user), method: :post %>
 		</ul>
 		<% end %>
