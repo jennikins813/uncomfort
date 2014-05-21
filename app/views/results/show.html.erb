@@ -20,7 +20,9 @@
 <% end %>
 <br>
 
-<% physical_result = 4 %>
+<% physical_result = @result.physical_result %>
+<%= "Your score is #{physical_result}." %>
+<br>
 <% if physical_result > 7 %>
 <%= "You have significant physical fears." %>
 <% else %>
@@ -28,7 +30,9 @@
 <% end %>
 <br>
 
-<% emotional_result = 9 %>
+<% emotional_result = @result.emotional_result %>
+<%= "Your score is #{emotional_result}." %>
+<br>
 <% if emotional_result > 8 %>
 <%= "You have significant emotional fears." %>
 <% else %>

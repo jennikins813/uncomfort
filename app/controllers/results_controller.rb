@@ -14,6 +14,6 @@ class ResultsController < ApplicationController
 	end
 
 	def result_params
-		params.require(:result).permit(:score)
+		params.require(:result).permit(:score, :emotional_result, :physical_result)
 	end
 end
