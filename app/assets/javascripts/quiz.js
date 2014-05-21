@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
   $('#results').hide();
+  
 
 
   answers = new Object();
