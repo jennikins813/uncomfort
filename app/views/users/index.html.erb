@@ -1,11 +1,6 @@
-<h1>User Index</h1>
 <p> <%= link_to "Quiz", "/quizzes/new" %> </p>
 
-<div id="tag_cloud">
-	<% tag_cloud User.tag_counts, %w[s m l] do |tag, css_class| %>
-		<%= link_to tag.name, tag_path(tag.name), class: css_class %>
-	<% end %>	
-</div>
+<h1>Comfort Friends</h1>
 
 <!-- <div id="users">
 < for user in @users %>
@@ -24,5 +19,12 @@
 		<%= button_to "Add Friend", friendships_path(friend_id: user), method: :post %>
 		</ul>
 		<% end %>
+	<% end %>	
+</div>
+
+
+<div id="tag_cloud">
+	<% tag_cloud User.tag_counts, %w[s m l] do |tag, css_class| %>
+		<%= link_to tag.name, tag_path(tag.name), class: css_class %>
 	<% end %>	
 </div>
