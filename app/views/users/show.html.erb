@@ -5,16 +5,19 @@
 
 <p> <%= image_tag(@user.image_url, :width => 300) if @user.image.present? %> </p>
 
-<p> <b>Email:</b><%= @user.email %> </p>
+<p> <b>Email:</b> <%= @user.email %> </p>
 
-<p> <b>Comfort Bio:</b><%= @user.bio %> </p>	
-
-<p><b>Tags:</b>
-	<%= current_user.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe %></p>
+<p> <b>Comfort Bio: </b><%= @user.bio %> </p>	
 </div>
 
+<div class="tags">
+	<p><b>Interests:</b>
+		<br />
+		<%= @user.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe %></p>
+</div>	
+
 <div class="friends_list">
-	<h2>Friends:</h2>
+	<h3>Following:</h3>
 	<ul>
 		<% for friendship in @user.friendships %>
 			<li>
@@ -26,7 +29,7 @@
 
 	<p><b><%= link_to "Find Friends", users_path %></b></p>	
 
-	<h2>Friended by Users</h2>
+	<h3>Followers:</h3>
 	<ul>
 		<% for user in @user.inverse_friends %>
 			<li><%=h user.name %></li>
@@ -35,7 +38,44 @@
 
 </div>
 
+	<% if current_user %>
+		<h3>Comments for <%= @user.name %>:</h3>
+
+		<% @user.comments.each do |comment| %>
+			<p>
+				<% if comment.id.present? %>
+				<div id="comments">
+					<%= comment.comment %>
+					<br>
+					<% if comment.user != nil %>
+						<em> by <%= comment.user.name %></em>
+						Added on: <%= comment.created_at %>
+					<% end %>
+				<% end %>	
+				</div>
+			</p>	
+		<% end %>
+
+		<b>Add Comments for <%= @user.name %>:</b> <br />
+
+		<%= form_for([@user, @comment]) do |f| %>
+
+			<div class="field">
+			<%= f.label :comment %><br />
+			<%= f.text_area :comment %>	
+			</div>
+
+			<div class="actions">
+			<%= f.submit %>	
+			</div>
+
+		<% end %>		
+
+	<% else %>
+		<p>Please <%= link_to "Log in", new_user_session_path %> to add a comment. </p>
+	<% end %>
+
 <div id="nav">
 <b><%= link_to "Edit User Info", edit_user_path(current_user.id) %></b> |
-<b><%= link_to "Back", root_url %></b>
+<b><%= link_to "Home", root_url %></b>
 </div>

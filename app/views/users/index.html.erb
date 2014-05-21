@@ -1,21 +1,32 @@
-<h1>User Index</h1>
 <p> <%= link_to "Quiz", "/quizzes/new" %> </p>
+
+<h1>Comfort Friends</h1>
 
 <!-- <div id="users">
 < for user in @users %>
 </div> -->
-	<div class="users">
-	<% User.all.each do |user| %>
-	<ul>
-	<b><%=h user.name %></b>
-	<%= link_to "Add Friend", friendships_path(friend_id: user), method: :post %>
-	</ul>
-	<% end %>
-	</div>	
-	<div class="tags">
-		<p><b>Tags:</b>
-			<%= current_user.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe %></p>
-	</div>		
+<%= form_tag users_path, method: :get, authentication: false, id: 'search-form' do %>
+	<%= text_field_tag :search, params[:search] %>
+	<%= submit_tag "Search User" %>
+<% end %>
+
+<div id="users">
+	<% @users.each do |user| %>
+		<%= link_to h user_path(user.id) do %>
+		<ul>
+		<b><%= user.name %></b>	
+		  <p><b>Interests:</b>
+			<br />
+		 	<%= user.tag_list.map {|t| link_to t, tag_path(t)}.join(', ').html_safe %></p>
+		<%= button_to "Add Friend", friendships_path(friend_id: user), method: :post %>
+		</ul>
+		<% end %>
+	<% end %>	
+</div>
 
 
-<%= link_to current_user.name, user_path(current_user.id) %>
+<div id="tag_cloud">
+	<% tag_cloud User.tag_counts, %w[s m l] do |tag, css_class| %>
+		<%= link_to tag.name, tag_path(tag.name), class: css_class %>
+	<% end %>	
+</div>
