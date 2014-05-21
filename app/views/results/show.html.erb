@@ -2,16 +2,15 @@
 <head>
 	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript" href="quiz.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
 </head>
 
 <body>
 <h1>Results</h1>
 
-
-
-
-<% result = 24 %>
+<% result = @result.score %>
+<%= "Your score is #{result}." %>
+<br>
 <% if result > 20 %>
 <%=	"You're a creature of comfort." %>
 <% elsif result > 10 %>
