@@ -37,6 +37,41 @@
 
 </div>
 
+	<% if current_user %>
+		<h2>Comments for <%= @user.name %></h2>
+
+		<div id="comments">
+		<% @user.comments.each do |comment| %>
+			<p>
+				<%= comment.comment %>
+				<br>
+				<% if comment.user != nil %>
+					<em> by <%= comment.user.name %></em>
+					Added on: <%= comment.created_at %>
+				<% end %>
+			</p>
+		<% end %>
+		</div>
+
+		<h2>New Comments</h2>
+
+		<%= form_for([@user, @comment]) do |f| %>
+
+			<div id="field">
+			<%= f.label :comment %><br />
+			<%= f.text_area :comment %>	
+			</div>
+
+			<div id="actions">
+			<%= f.submit %>	
+			</div>
+
+		<% end %>		
+	<% else %>
+		<p>Please <%= link_to "Log in", new_user_session_path %> to add a comment. </p>
+
+	<% end %>
+
 <div id="nav">
 <b><%= link_to "Edit User Info", edit_user_path(current_user.id) %></b> |
 <b><%= link_to "Back", root_url %></b>

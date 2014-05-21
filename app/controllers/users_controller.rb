@@ -15,6 +15,10 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id]) #current_user
 
+    if current_user
+      @comment = @user.comments.build
+    end
+
     #if params[:tag]
     #  @users = User.tagged_with(params[:tag]) #.order(:created_at).page(page)
     #else
