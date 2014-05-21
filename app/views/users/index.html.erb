@@ -13,15 +13,12 @@
 	<div class="users">
 	<% User.all.each do |user| %>
 	<ul>
-	<b><%=h user.name %></b>
-	<%= link_to "Add Friend", friendships_path(friend_id: user), method: :post %>
+	<b><%= link_to h user.name %></b>
+	  <p>Tags: <%= user.tag_list.map {|t| link_to t, tag_path(t)}.join(', ').html_safe %></p>
+	<%= button_to "Add Friend", friendships_path(friend_id: user), method: :post %>
 	</ul>
 	<% end %>
 	</div>	
-	<div class="tags">
-		<p><b>Tags:</b>
-			<%= current_user.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe %></p>
-	</div>		
 
 
-<%= link_to current_user.name, user_path(current_user.id) %>
+<%= link_to "Back to User's Page", user_path(current_user.id) %>

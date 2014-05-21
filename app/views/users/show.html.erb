@@ -8,10 +8,12 @@
 <p> <b>Email:</b><%= @user.email %> </p>
 
 <p> <b>Comfort Bio:</b><%= @user.bio %> </p>	
-
-<p><b>Tags:</b>
-	<%= current_user.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe %></p>
 </div>
+
+<div class="tags">
+	<p><b>Tags:</b>
+		<%= @user.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe %></p>
+</div>	
 
 <div class="friends_list">
 	<h2>Friends:</h2>
