@@ -10,15 +10,19 @@
 <!-- <div id="users">
 < for user in @users %>
 </div> -->
-	<div class="users">
-	<% User.all.each do |user| %>
-	<ul>
-	<b><%= link_to h user.name %></b>
-	  <p>Tags: <%= user.tag_list.map {|t| link_to t, tag_path(t)}.join(', ').html_safe %></p>
-	<%= button_to "Add Friend", friendships_path(friend_id: user), method: :post %>
-	</ul>
-	<% end %>
-	</div>	
+<%= form_tag users_path, method: :get, authentication: false, id: 'search-form' do %>
+	<%= text_field_tag :search, params[:search] %>
+	<%= submit_tag "Search User" %>
+<% end %>
 
-
-<%= link_to "Back to User's Page", user_path(current_user.id) %>
+<div id="users">
+	<% @users.each do |user| %>
+		<%= link_to h user_path(user.id) do %>
+		<ul>
+		<b><%= user.name %></b>	
+		  <p>Tags: <%= user.tag_list.map {|t| link_to t, tag_path(t)}.join(', ').html_safe %></p>
+		<%= button_to "Add Friend", friendships_path(friend_id: user), method: :post %>
+		</ul>
+		<% end %>
+	<% end %>	
+</div>
