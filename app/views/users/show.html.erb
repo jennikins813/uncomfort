@@ -1,81 +1,111 @@
-<h1><%= @user.name %>'s Page</h1>
 
-<div class="profile">
-	<p> <b>Name:</b> <%= @user.name %> </p>
-
-	<p> <%= image_tag(@user.image_url, :width => 300) if @user.image.present? %> </p>
-
-	<p> <b>Email:</b> <%= @user.email %> </p>
-
-	<p> <b>Comfort Bio: </b><%= @user.bio %> </p>	
+<div class="row">
+	<div class="large-12 columns">
+		<h1><%= @user.name %>'s Page</h1>
+	</div>
 </div>
 
-<div class="tags">
-	<p><b>Interests:</b>
-		<br />
-		<%= @user.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe %></p>
-	</div>	
+<div class="row">
+	<div class="large-12 columns">
+		<div class="profile">
+			<p> <b>Name:</b> <%= @user.name %> </p>
 
-	<div class="friends_list">
-		<h3>Following:</h3>
-		<ul>
-			<% for friendship in @user.friendships %>
-			<li>
-				<%=h friendship.friend.name %>
-				(<%= link_to "remove", friendship, method: :delete %>)
-			</li>
-			<% end %>	
-		</ul>
+			<p> <%= image_tag(@user.image_url, :width => 300) if @user.image.present? %> </p>
 
-		<p><b><%= link_to "Find Friends", users_path %></b></p>	
+			<p> <b>Email:</b> <%= @user.email %> </p>
 
-		<h3>Followers:</h3>
-		<ul>
-			<% for user in @user.inverse_friends %>
-			<li><%=h user.name %></li>
-			<% end %>	
-		</ul>
-
-	</div>
-
-	<% if current_user %>
-	<h3>Comments for <%= @user.name %>:</h3>
-
-	<% @user.comments.each do |comment| %>
-	<p>
-		<% if comment.id.present? %>
-		<div id="comments">
-			<%= comment.comment %>
-			<br>
-			<% if comment.user != nil %>
-			<em> by <%= comment.user.name %></em> <br />
-			Added on: <%= comment.created_at %>
-			<% end %>
-			<% end %>	
+			<p> <b>Comfort Bio: </b><%= @user.bio %> </p>	
 		</div>
-	</p>	
-	<% end %>
+	</div>
+</div>
 
-	<b>Add Comments for <%= @user.name %>:</b> <br />
 
-	<%= form_for([@user, @comment]) do |f| %>
-
-	<div class="field">
-		<%= f.label :comment %><br />
-		<%= f.text_area :comment %>	
+<div class="row">
+	<div class="large-12 columns">
+		<div class="tags">
+			<p><b>Interests:</b>
+				<br />
+				<%= @user.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe %></p>
+			</div>	
+		</div>
 	</div>
 
-	<div class="actions">
-		<%= f.submit %>	
+	<div class="row">
+		<div class="large-12 columns">
+			<div class="friends_list">
+				<h3>Following:</h3>
+				<ul>
+					<% for friendship in @user.friendships %>
+					<li>
+						<%=h friendship.friend.name %>
+						(<%= link_to "remove", friendship, method: :delete %>)
+					</li>
+					<% end %>	
+				</ul>
+
+				<p><b><%= link_to "Find Friends", users_path %></b></p>	
+
+				<h3>Followers:</h3>
+				<ul>
+					<% for user in @user.inverse_friends %>
+					<li><%=h user.name %></li>
+					<% end %>	
+				</ul>
+
+			</div>
+		</div>
 	</div>
 
-	<% end %>		
+	<div class="row">
+		<div class="large-12 columns">
+			<% if current_user %>
+			<h3>Comments for <%= @user.name %>:</h3>
 
-	<% else %>
-	<p>Please <%= link_to "Log in", new_user_session_path %> to add a comment. </p>
-	<% end %>
-
-	<div id="nav">
-		<b><%= link_to "Edit User Info", edit_user_path(current_user.id) %></b> |
-		<b><%= link_to "Home", root_url %></b>
+			<% @user.comments.each do |comment| %>
+			<p>
+				<% if comment.id.present? %>
+				<div id="comments">
+					<%= comment.comment %>
+					<br>
+					<% if comment.user != nil %>
+					<em> by <%= comment.user.name %></em> <br />
+					Added on: <%= comment.created_at %>
+					<% end %>
+					<% end %>	
+				</div>
+			</p>	
+			<% end %>
+		</div>
 	</div>
+
+	<div class="row">
+		<div class="large-12 columns">
+			<b>Add Comments for <%= @user.name %>:</b> <br />
+
+			<%= form_for([@user, @comment]) do |f| %>
+
+			<div class="field">
+				<%= f.label :comment %><br />
+				<%= f.text_area :comment %>	
+			</div>
+
+			<div class="actions">
+				<%= f.submit %>	
+			</div>
+
+			<% end %>		
+
+			<% else %>
+			<p>Please <%= link_to "Log in", new_user_session_path %> to add a comment. </p>
+			<% end %>
+		</div>
+	</div>
+
+	<div class="row">
+	<div class="large-12 columns">
+		<div id="nav">
+			<b><%= link_to "Edit User Info", edit_user_path(current_user.id) %></b> |
+			<b><%= link_to "Home", root_url %></b>
+		</div>
+	</div>
+</div>
