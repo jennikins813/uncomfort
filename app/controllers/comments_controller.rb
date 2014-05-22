@@ -16,14 +16,15 @@ class CommentsController < ApplicationController
   # This is what's happening, from above.
   # params[:utf8]
   # params[:authenticity_token]
-  # params[:user_id]  # WRONG
+  # params[:user_id]  # ACTUALLY OKAY
 
   # params[:comment][:comment]
-  # params[:comment][:user_id]  #CORRECT
+  # params[:comment][:user_id]  #I WAS WRONG
   # params[:comment][:tag_id]
 
   def create
     @comment = @user.comments.build(comment_params)
+    @comment.user = @user
     @comment.commenter_id = current_user.id   # this is the person that is making the comment, ie. the logged in person.
 
     if @comment.save

@@ -59,21 +59,22 @@
 	<div class="row">
 		<div class="large-12 columns">
 			<% if current_user %>
-			<h3>Comments for <%= @user.name %>:</h3>
+				<h3>Comments for <%= @user.name %>:</h3>
 
-			<% @user.comments.each do |comment| %>
-			<p>
-				<% if comment.id.present? %>
-				<div id="comments">
-					<%= comment.comment %>
-					<br>
-					<% if comment.user != nil %>
-					<em> by <%= comment.user.name %></em> <br />
-					Added on: <%= comment.created_at %>
-					<% end %>
-					<% end %>	
-				</div>
-			</p>	
+				<% @user.comments.each do |comment| %>
+					<p>
+						<% if comment.id.present? %>
+							<div id="comments">
+								<%= comment.comment %>
+								<br>
+								<% if comment.user != nil %>
+									<em> by <%= comment.user.name %></em> <br />
+									Added on: <%= comment.created_at %>
+								<% end %>				
+							</div>
+						<% end %>	
+					</p>	
+				<% end %>
 			<% end %>
 		</div>
 	</div>
@@ -85,14 +86,14 @@
 
 				<%= form_for([@user, @comment]) do |f| %>
 
-				<div class="field">
-					<%= f.label :comment %><br />
-					<%= f.text_area :comment %>	
-				</div>
+					<div class="field">
+						<%= f.label :comment %><br />
+						<%= f.text_area :comment %>	
+					</div>
 
-				<div class="actions">
-					<%= f.submit %>	
-				</div>
+					<div class="actions">
+						<%= f.submit %>	
+					</div>
 
 				<% end %>		
 
