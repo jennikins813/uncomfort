@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user  
   has_many :comments
+  #has_many :owned_comments, class_name: 'Comment', foreign_key: 'owner_id'
+  #has_many :posted_comments, class_name: 'Comment', foreign_key: 'commenter_id'
 
   #has_one :profile
   #accepts_nested_attributes_for :profile

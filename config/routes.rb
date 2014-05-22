@@ -15,7 +15,7 @@ Uncomfort::Application.routes.draw do
   
   resources :friendships, only: [:create, :destroy]
   resources :users do
-    resources :comments, :only => [:show, :create, :destroy]
+    resources :comments, :only => [:show, :create, :destroy, :index]
   end
   resources :user_sessions
   resources :results, only: [:create, :show]
