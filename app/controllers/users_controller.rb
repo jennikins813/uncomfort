@@ -3,18 +3,19 @@ class UsersController < ApplicationController
   skip_before_filter :require_login, only: [:index, :new, :create]
 
   def index
+    @users = User.all
     @users = if params[:search]
       User.where("name LIKE ?", "%#{params[:search]}%")
     else
       User.all
     end
-    #@users = User.all
+    #
+     if params[:tag]
+       @users = User.tagged_with(params[:tag]) #.order(:created_at).page(page)
+     else
+       @user = User.all
+     end
 
-    # if params[:tag]
-    #   @users = User.tagged_with(params[:tag]) #.order(:created_at).page(page)
-    # else
-    #   @user = User.all
-    # end
     respond_to do |format|
       format.html
       format.js
