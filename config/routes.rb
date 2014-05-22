@@ -15,7 +15,6 @@ Uncomfort::Application.routes.draw do
   
   resources :friendships, only: [:create, :destroy]
   resources :users do
-    get 'search', on: :collection
     resources :comments, :only => [:show, :create, :destroy, :index]
   end
   resources :user_sessions

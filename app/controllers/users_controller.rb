@@ -15,11 +15,10 @@ class UsersController < ApplicationController
     # else
     #   @user = User.all
     # end
-  end
-
-  def search
-    @users = User.where("name LIKE ?", "%#{params[:search]}%")
-    render @users
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
