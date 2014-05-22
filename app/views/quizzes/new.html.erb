@@ -115,7 +115,7 @@
 
 
 			<input class="answers" type="radio" name="q10" value="2" id="q10a"/><label for="q10a">Very Bothered</label><br/>       <input class="answers" type="radio" name="q10" value="1" id="q10b"/><label for="q10b">Slightly Bothered</label><br/>  
-			<input class="answers" type="radio" name="q10" value="0" id="q10c"/><label for="q10c">Not Bothered</label><br/>            
+			<input class="answers" type="radio" name="q10" vlue="0" id="q10c"/><label for="q10c">Not Bothered</label><br/>            
 
 		</div>       
 
@@ -161,9 +161,11 @@
 			</div>
 		</div> 
 		<br/>
-
+			
 		<div id="results">
-			<%= f.submit "Show me my Results!" %>       
+			
+			<%= f.submit "Show me my Results!" %> <br>
+			<img src="/finished.png"> <br>      
 		</div>
 
 		<input type="button" id='next' value= 'next' />
