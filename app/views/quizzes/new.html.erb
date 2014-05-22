@@ -110,8 +110,8 @@
 
 		<div class="question physical">
 			<img src="/dr-t.jpeg"><br>
-			11. Time for your yearly checkup (Image Dentist, Image Doctor) How do feel?<br>
-			
+			11. Time for your yearly checkup. How do feel?<br>
+
 			<input class="answers" type="radio" name="q11" value="2" id="q11a"/><label for="q11a">Very Bothered</label><br/>      
 			<input class="answers" type="radio" name="q11" value="1" id="q11b"/><label for="q11b">Slightly Bothered</label><br/>   
 			<input class="answers" type="radio" name="q11" value="0" id="q11c"/><label for="q11c">Not Bothered</label><br/>          
@@ -155,13 +155,15 @@
 			</div>
 		</div> 
 		<br/>
-
+			
 		<div id="results">
-			<%= f.submit "Show me my Results!" %>       
+			
+			<%= f.submit "Show me my Results!" %> <br>
+			<img src="/finished.png"> <br>      
 		</div>
 
 		<input type="button" id='next' value= 'next' />
-		
+
 
 		<% end %>
 

@@ -1,8 +1,6 @@
 $(document).ready(function () {
 
   $('#results').hide();
-  
-
 
   answers = new Object();
   $('.answers').change(function () {

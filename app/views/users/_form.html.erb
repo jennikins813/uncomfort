@@ -12,18 +12,28 @@
 		<%= f.check_box :remove_image %>
 		<%= f.label :remove_image, "Remove Image" %>
 </div>
+<br/ >
 
 <div class="field">
 	<%= f.label :email %>
 	<%= f.text_field :email %>
 </div>
+<br/ >
 
 <div class="field">
-	<%= f.label :tag_list, "Tags (separated by commas)" %><br />
+	<%= f.label :comfort_bio %>
+	<%= f.text_area :bio %>
+</div>
+<br/ >
+
+<div class="field">
+	<%= f.label :tag_list, "Interests (separated by commas)" %><br />
 	<%= f.text_area :tag_list %>
 </div>
+<br/ >
 
 <div class="field">
+<p>Please re-enter you password:</p>
 	<%= f.label :password %> 
 	<%= f.password_field :password %>
 </div>

@@ -1,6 +1,5 @@
 Uncomfort::Application.routes.draw do
   
-  #get "welcome/index"
   root 'welcome#index'
 
   get "results/show"
@@ -15,7 +14,9 @@ Uncomfort::Application.routes.draw do
   get 'tags/:tag', to: 'users#index', as: :tag
   
   resources :friendships, only: [:create, :destroy]
-  resources :users
+  resources :users do
+    resources :comments, :only => [:show, :create, :destroy, :index]
+  end
   resources :user_sessions
   resources :results, only: [:create, :show]
 
