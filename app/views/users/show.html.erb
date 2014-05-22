@@ -61,14 +61,14 @@
 			<% if current_user %>
 				<h3>Comments for <%= @user.name %>:</h3>
 
-				<% @user.comments.each do |comment| %>
+				<% @user.received_comments.each do |comment| %>
 					<p>
 						<% if comment.id.present? %>
 							<div id="comments">
 								<%= comment.comment %>
 								<br>
 								<% if comment.user != nil %>
-									<em> by <%= comment.user.name %></em> <br />
+									<em> by <%= comment.commenter.name %></em> <br />
 									Added on: <%= comment.created_at %>
 								<% end %>				
 							</div>
