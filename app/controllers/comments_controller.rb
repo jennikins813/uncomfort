@@ -9,9 +9,23 @@ class CommentsController < ApplicationController
     @user = User.find(params[:id])
   end
 
+
+
+  # Parameters: {"utf8"=>"✓", "authenticity_token"=>"1FywcPVAOJULgNgyPUwR6QRtGVPBIJjPyk6aCQ+YGJA=", "comment"=>{"comment"=>"Hi Bunny!\r\n"}, "commit"=>"Create Comment", "user_id"=>"2"}
+
+  # This is what's happening, from above.
+  # params[:utf8]
+  # params[:authenticity_token]
+  # params[:user_id]  # ACTUALLY OKAY
+
+  # params[:comment][:comment]
+  # params[:comment][:user_id]  #I WAS WRONG
+  # params[:comment][:tag_id]
+
   def create
     @comment = @user.comments.build(comment_params)
-    @comment.user_id = current_user.id
+    @comment.user = @user
+    @comment.commenter_id = current_user.id   # this is the person that is making the comment, ie. the logged in person.
 
     if @comment.save
       redirect_to users_path, notice: "Comment saved!"
@@ -29,6 +43,7 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:comment, :user_id, :tag_id) #or :tag_list??
   end
+
 
   def load_user
     @user = User.find(params[:user_id])

@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20140521214807) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "score"
+    t.integer  "results_id"
     t.integer  "physical_result"
     t.integer  "emotional_result"
   end
