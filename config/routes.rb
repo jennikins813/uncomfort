@@ -30,6 +30,7 @@ Uncomfort::Application.routes.draw do
   get '/application/about' => 'application#about'
   get '/application/contact' => 'application#contact'
   get '/application/faq' => 'application#faq'
+  get '/application/terms' => 'application#terms'
 
   #root :to => 'users#index'
 
