@@ -22,11 +22,11 @@ ActiveRecord::Schema.define(version: 20140521214807) do
 
   create_table "comments", force: true do |t|
     t.text     "comment"
-    t.integer  "user_id"
+    t.integer  "user_id" #being commented 
     t.integer  "tag_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "commenter_id"
+    t.integer  "commenter_id" #owner
   end
 
   create_table "friendships", force: true do |t|

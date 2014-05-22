@@ -67,6 +67,12 @@
 		<p id="alert"> <%= flash[:alert] %> </p>
 	</div>
 
+	<div id="lower-nav">
+		<%= link_to "Terms of Service", application_terms_path %> |
+		<%= link_to "Privacy Policy", application_privacy_path %>
+
+	</div>
+
 	<%= yield %>
  	<%= javascript_include_tag "application" %>
 
