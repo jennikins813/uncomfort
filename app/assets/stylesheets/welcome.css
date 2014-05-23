@@ -1,4 +1,8 @@
-img {
+body {
+	background:url(http://bglabs.evade.netdna-cdn.com/files/dandelions-vector-background-1396.png);
+}
+
+/*img {
 	display: block;
 	margin: 0px, auto;
-}
+*/
