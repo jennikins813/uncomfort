@@ -1,8 +1,8 @@
 body {
 	background:url(http://bglabs.evade.netdna-cdn.com/files/dandelions-vector-background-1396.png);	
-	
-	
+	opacity: 0.9;	
 }
+
 .welcome-image-1 {
 	margin:1rem;
 	padding:1px;

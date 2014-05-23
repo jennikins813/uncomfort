@@ -1,3 +1,5 @@
+
+
 <html>
 <head>
 	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript" href="quiz.js"></script>
@@ -6,51 +8,61 @@
 </head>
 
 <body>
-<h1>Results</h1>
+	<div class="results">
+		<div class="row">
+			<div class="large-12 columns">	
+				<h1>Results</h1>
+				<p>
+					<% result = @result.score %>
+					<%= "Your score is #{result}." %>
+					<br>
+					<% if result > 20 %>
+					<%=	"You prefer to stay within your comfort zone." %>
+					<% elsif result > 10 %>
+					<%=	"You're only willing to step out of your comfort zone if the pay off is evident." %>
+					<% else %>
+					<%=	"You have no problem stepping out of your comfort zone." %>
+					<% end %>
+					<br>
+				</p>
+				<p>
+					<% physical_result = @result.physical_result %>
+					<%= "Your physical score is #{physical_result}." %>
+					<br>
+					<% if physical_result > 7 %>
+					<%= "You have significant physical fears." %>
+					<% else %>
+					<%= "Your physical fears are minimal." %>
+					<% end %>
+					<br>
+				</p>
+				<p>
+					<% emotional_result = @result.emotional_result %>
+					<%= "Your emotional score is #{emotional_result}." %>
+					<br>
+					<% if emotional_result > 8 %>
+					<%= "You have significant emotional fears." %>
+					<% else %>
+					<%= "Your emotional fears are minimal." %>
+					<% end %>
+					<br>
+				</p>
+				<p>
+					<% type_result = emotional_result - physical_result %>
+					<% if type_result > 4 %>
+					<%= "You have more emotional fears than physical fears." %>
+					<% elsif type_result > -2 %>
+					<%= "You have a similar amount of both physical and emotional fears." %>
+					<% else %>
+					<%= "You have more physical fears than emotional fears." %>
+					<% end %>
+					<br>
+				</p>
 
-<% result = @result.score %>
-<%= "Your score is #{result}." %>
-<br>
-<% if result > 20 %>
-<%=	"You prefer to stay within your comfort zone." %>
-<% elsif result > 10 %>
-<%=	"You're only willing to step out of your comfort zone if the pay off is evident." %>
-<% else %>
-<%=	"You have no problem stepping out of your comfort zone." %>
-<% end %>
-<br>
-
-<% physical_result = @result.physical_result %>
-<%= "Your physical score is #{physical_result}." %>
-<br>
-<% if physical_result > 7 %>
-<%= "You have significant physical fears." %>
-<% else %>
-<%= "Your physical fears are minimal." %>
-<% end %>
-<br>
-
-<% emotional_result = @result.emotional_result %>
-<%= "Your emotional score is #{emotional_result}." %>
-<br>
-<% if emotional_result > 8 %>
-<%= "You have significant emotional fears." %>
-<% else %>
-<%= "Your emotional fears are minimal." %>
-<% end %>
-<br>
-
-<% type_result = emotional_result - physical_result %>
-<% if type_result > 4 %>
-<%= "You have more emotional fears than physical fears." %>
-<% elsif type_result > -2 %>
-<%= "You have a similar amount of both physical and emotional fears." %>
-<% else %>
-<%= "You have more physical fears than emotional fears." %>
-<% end %>
-<br>
-
-<p> We might be able to help. Maybe you should <%= link_to "sign up", "/users/new" %>! </p>
-<p> Already a member? <%= link_to "Login", :login %>! </p>
-</body>
-</html>
+				<p> We might be able to help. Maybe you should <%= link_to "sign up", "/users/new" %>! </br>
+					Already a member? <%= link_to "Login", :login %>! </p>
+				</div>
+			</div>
+		</div>
+	</body>
+	</html>
