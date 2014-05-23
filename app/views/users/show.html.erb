@@ -1,5 +1,5 @@
 <div class="row">
-	<h1><%= @user.name %>'s Page</h1>
+	<h1><b><%= @user.name %>'s Page</b></h1>
 
 	<div class="large-6 columns">
 		<div class="profile">
@@ -13,7 +13,7 @@
 		<div class="tags">
 			<p><b>Comfort Areas:</b>
 				<br />
-				<%= @user.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe %></p>
+				<b><%= @user.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe %></b></p>
 		</div>
 	</div>
 	
@@ -22,7 +22,7 @@
 		
 	<div class="large-4 columns">
 		<div class="friends_list">
-			<h3>Following:</h3>
+			<h3><b>Following:</b></h3>
 			<ul>
 				<% for friendship in @user.friendships %>
 				<li>
@@ -32,9 +32,9 @@
 				<% end %>	
 			</ul>
 			<div class="button tiny radius"><%= link_to "Find Friends", users_path %></a> </div>
-				<br>(button above is for Find Friends) <br />
+	
 
-				<h3>Followers:</h3>
+				<h3><b>Followers:</b></h3>
 				<ul>
 					<% for user in @user.inverse_friends %>
 					<li><%=h user.name %></li>
@@ -43,7 +43,7 @@
 			</div>
 		
 			<% if current_user %>
-				<h3>Comments for <%= @user.name %>:</h3>
+				<h3><b>Comments for <%= @user.name %>:</b></h3>
 
 				<% @user.received_comments.each do |comment| %>
 					<p>

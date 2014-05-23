@@ -3,7 +3,7 @@
 	<div class="large-8 columns">
 		<%= link_to h user_path(user.id) do %>
 		<ul>
-		<b><%= user.name %></b>	
+		<h3><b><%= user.name %></b>	</h3>
 		  <p><b>Comfort:</b>
 			<br />
 		 	<%= user.tag_list.map {|t| link_to t, tag_path(t)}.join(', ').html_safe %></p>
