@@ -1,8 +1,14 @@
 <%= form_for @user, html: {multipart: true} do |f| %>
 
-<div class="field">
-	<%= f.label :name %>
-	<%= f.text_field :name%>
+<div class="row">
+	<div class="large-8 columns">
+		<div class="field">
+		<%= f.label :name %>
+		<%= f.text_field :name%>
+		</div>
+	</div>
+	<div class="large-4 columns">
+	</div>
 </div>
 
 <div class="field">
@@ -14,34 +20,64 @@
 </div>
 <br/ >
 
-<div class="field">
-	<%= f.label :email %>
-	<%= f.text_field :email %>
-</div>
+<div class="row">
+	<div class="large-8 columns">
+		<div class="field">
+			<%= f.label :email %>
+			<%= f.text_field :email %>
+		</div>
+	</div>
+	<div class="large-4 columns">
+	</div>
+</div>		
 <br/ >
 
-<div class="field">
-	<%= f.label :comfort_bio %>
-	<%= f.text_area :bio %>
-</div>
+<div class="row">
+	<div class="large-8 columns">
+		<div class="field">
+			<%= f.label :comfort_bio %>
+			<%= f.text_area :bio %>
+		</div>
+	</div>
+	<div class="large-4 columns">
+	</div>
+</div>		
 <br/ >
 
-<div class="field">
-	<%= f.label :tag_list, "Comfort Areas (separated by commas)", class: "left inline", title: "Things you'd like to overcome.", data: {tooltip:true} %><br />
-	<%= f.text_area :tag_list %>
-</div>
+<div class="row">
+	<div class="large-8 columns">
+		<div class="field">
+			<%= f.label :tag_list, "Comfort Areas (separated by commas)", class: "left inline", title: "Things you'd like to overcome.", data: {tooltip:true} %><br />
+			<%= f.text_area :tag_list %>
+		</div>
+	</div>
+	<div class="large-4 columns">
+	</div>
+</div>		
 <br/ >
 
-<div class="field">
-<p>Please re-enter you password:</p>
-	<%= f.label :password %> 
-	<%= f.password_field :password %>
-</div>
+<div class="row">
+	<div class="large-8 columns">
+		<div class="field">
+		<p>Please re-enter you password:</p>
+			<%= f.label :password %> 
+			<%= f.password_field :password %>
+		</div>
+	</div>
+	<div class="large-4 columns">
+	</div>
+</div>		
 
-<div class="field">
-	<%= f.label :password_confirmation %> 
-	<%= f.password_field :password_confirmation %> 
-</div>
+<div class="row">
+	<div class="large-8 columns">
+		<div class="field">
+			<%= f.label :password_confirmation %> 
+			<%= f.password_field :password_confirmation %> 
+		</div>
+	</div>
+	<div class="large-4 columns">
+	</div>
+</div>		
 
 <div class="actions">
 	<%= f.submit %>
