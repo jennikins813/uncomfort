@@ -1,0 +1,6 @@
+div#lower-nav {
+	position: fixed;
+	bottom: 0px;
+	padding: 15px;
+	left: 2%;
+}
