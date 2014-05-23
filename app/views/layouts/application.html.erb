@@ -28,7 +28,7 @@
 		  <section class="top-bar-section">
 		    <!-- Right Nav Section -->
 		    <ul class="right">
-		      <li class="active"><a href="#">Right Button Active</a></li>
+		      <li class="active"><%= link_to "Quiz", "/quizzes/new" %></li>
 		      <li class="has-dropdown">
 		        <a href="#">Right Button Dropdown</a>
 		        <ul class="dropdown">
@@ -39,27 +39,21 @@
 
 		    <!-- Left Nav Section -->
 		    <ul class="left">
-		      
-		      <% if current_user %>
+		    	<li><%= link_to "About", application_about_path %></li> 
+				<li><%= link_to "Contact", application_contact_path %></li> 
+				<li><%= link_to "FAQ", application_faq_path %></li>
+		      	<% if current_user %>
 				<li><%= link_to "User's Page", user_path(current_user.id) %></li>
 			 	<li><%= link_to "Logout", :logout, method: :post %></li>
 			 	<li>Logged in as,<b><%= link_to current_user.name, user_path(current_user.id)%></li>
 
-			<% else %>
-			  <li><%= link_to "Register", new_user_path%></li>
-			  <li><%= link_to "Login", :login %> </li>
-			<% end %>
+				<% else %>
+			  	<li><%= link_to "Register", new_user_path%></li>
+			  	<li><%= link_to "Login", :login %> </li>
+				<% end %>
 		    </ul>
 		  </section>
 		</nav>
-	</div>
-
-	<div id="nav">
-		<%= link_to "About", application_about_path %> |
-		<%= link_to "Contact", application_contact_path %> |
-		<%= link_to "FAQ", application_faq_path %> |
-
-		
 	</div>
 
 	<div >
