@@ -1,21 +1,37 @@
 <p> <%= link_to "Quiz", "/quizzes/new" %> </p>
 
 <h1>Comfort Friends</h1>
-
-<%= form_tag users_path, method: :get, authentication: false, id: 'search-form' do %>
-	<%= text_field_tag :search, params[:search] %>
-	<%= submit_tag "Search User" %>
-<% end %>
+<div class="row">
+	<div class="large-8 columns">
+		<%= form_tag users_path, method: :get, authentication: false, id: 'search-form' do %>
+			<%= text_field_tag :search, params[:search] %>
+			<%= submit_tag "Search User" %>
+		<% end %>
+	</div>
+	<div class="large-4 columns">
+	</div>
+</div>		
 
 <div id="users">
 	<%= render @users %>
 </div>
 
+<div class="row">
+	<div class="large-8 columns">
+		<div id="tag_cloud">
+			<% tag_cloud User.tag_counts, %w[s m l] do |tag, css_class| %>
+				<%= link_to tag.name, tag_path(tag.name), class: css_class %>
+			<% end %>	
+		</div>
+	</div>
+	<div class="large-4 columns">
+	</div>
+</div>	
 
-<div id="tag_cloud">
-	<% tag_cloud User.tag_counts, %w[s m l] do |tag, css_class| %>
-		<%= link_to tag.name, tag_path(tag.name), class: css_class %>
-	<% end %>	
-</div>
-
-<p><b><%= link_to "All Users", users_path %></b></p>	
+<div class="row">
+	<div class="large-8 columns">
+		<p><b><%= link_to "All Users", users_path %></b></p>	
+	</div>
+	<div class="large-4 columns">
+	</div>
+</div>	

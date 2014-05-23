@@ -1,11 +1,17 @@
 <!--% @users.each do |user| % -->
-	<%= link_to h user_path(user.id) do %>
-	<ul>
-	<b><%= user.name %></b>	
-	  <p><b>Interests:</b>
-		<br />
-	 	<%= user.tag_list.map {|t| link_to t, tag_path(t)}.join(', ').html_safe %></p>
-	<%= button_to "Add Friend", friendships_path(friend_id: user), method: :post %>
-	</ul>
-	<% end %>
+<div class="row">
+	<div class="large-8 columns">
+		<%= link_to h user_path(user.id) do %>
+		<ul>
+		<b><%= user.name %></b>	
+		  <p><b>Comfort:</b>
+			<br />
+		 	<%= user.tag_list.map {|t| link_to t, tag_path(t)}.join(', ').html_safe %></p>
+		<%= button_to "Add Friend", friendships_path(friend_id: user), method: :post %>
+		</ul>
+		<% end %>
+	</div>
+	<div class="large-4 columns">
+	</div>
+</div>		
 <!--% end % -->	
