@@ -15,6 +15,7 @@
   	
 </head>
   <body>
+  <div class="page-wrap">
   	<div class="fixed">
 		<nav class="top-bar" data-topbar>
 		  <ul class="title-area">
@@ -61,12 +62,12 @@
 		<p id="alert"> <%= flash[:alert] %> </p>
 	</div>
 
-	<div id="lower-nav">
+	<footer class="footer">
 		<%= link_to "Terms of Service", application_terms_path %> |
 		<%= link_to "Privacy Policy", application_privacy_path %>
 
-	</div>
-
+	</footer>
+</div>
 	<%= yield %>
  	<%= javascript_include_tag "application" %>
 
