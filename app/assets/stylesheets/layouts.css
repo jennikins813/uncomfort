@@ -1,6 +1,9 @@
-div#lower-nav {
+
+
+.footer {
 	position: fixed;
-	bottom: 0px;
-	padding: 15px;
-	left: 2%;
+  bottom:0px;
+	color: white;
+  margin-bottom: 7px;
+  left: 2%;
 }
