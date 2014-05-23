@@ -32,46 +32,48 @@ $(document).ready(function () {
   function sum_values() {
     var the_sum = 0;
     for (question in answers) {
-        the_sum = the_sum + parseInt(answers[question]);
+      the_sum = the_sum + parseInt(answers[question]);
     }
     return the_sum;
-}
+  }
 
   function emotional_sum_values() {
     var emotional_sum = 0;
     for (e_q in emotional) {
-        emotional_sum = emotional_sum + parseInt(emotional[e_q]);
+      emotional_sum = emotional_sum + parseInt(emotional[e_q]);
     }
     return emotional_sum;
-}
+  }
 
   function physical_sum_values() {
     var physical_sum = 0;
     for (p_q in physical) {
-        physical_sum = physical_sum + parseInt(physical[p_q]);
+      physical_sum = physical_sum + parseInt(physical[p_q]);
     }
     return physical_sum;
-}
+  }
 
-$('#next').click(function () {
+  $('#next').click(function () {
     $($questions.get(currentQuestion)).fadeOut(function () {
-        currentQuestion = currentQuestion + 1;
-        if (currentQuestion === totalQuestions ) {
-            var result = sum_values();
-            var emotional_result = emotional_sum_values();
-            var physical_result = physical_sum_values();
-            $('#result_score').val(result);
-            $('#result_emotional_result').val(emotional_result);
-            $('#result_physical_result').val(physical_result);
-            $('#results').show() && $('#next').hide();  
+      currentQuestion = currentQuestion + 1;
+      if (currentQuestion === totalQuestions ) {
+        var result = sum_values();
+        var emotional_result = emotional_sum_values();
+        var physical_result = physical_sum_values();
+        $('#result_score').val(result);
+        $('#result_emotional_result').val(emotional_result);
+        $('#result_physical_result').val(physical_result);
+        $('#results').show() && $('#next').hide();  
 
-        } else {
-            $($questions.get(currentQuestion)).fadeIn();
-            
-        }
+      } else {
+        $($questions.get(currentQuestion)).fadeIn();
+
+      }
     });
 
-    
-});
+$('#next').click(function () {
+   currentQuestion = currentQuestion + 1;
+
+  });
 
 });
