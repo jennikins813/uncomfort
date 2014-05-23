@@ -29,21 +29,8 @@
 		    <!-- Right Nav Section -->
 		    <ul class="right">
 		      <li class="active"><%= link_to "Quiz", "/quizzes/new" %></li>
-		      <li class="has-dropdown">
-		        <a href="#">Right Button Dropdown</a>
-		        <ul class="dropdown">
-		          <li><a href="#">First link in dropdown</a></li>
-		        </ul>
-		      </li>
-		    </ul>
-
-		    <!-- Left Nav Section -->
-		    <ul class="left">
-		    	<li><%= link_to "About", application_about_path %></li> 
-				<li><%= link_to "Contact", application_contact_path %></li> 
-				<li><%= link_to "FAQ", application_faq_path %></li>
-		      	<% if current_user %>
-				<li><%= link_to "User's Page", user_path(current_user.id) %></li>
+		      <% if current_user %>
+				<li><%= link_to "Profile Page", user_path(current_user.id) %></li>
 			 	<li><%= link_to "Logout", :logout, method: :post %></li>
 			 	<li>Logged in as,<b><%= link_to current_user.name, user_path(current_user.id)%></li>
 
@@ -51,6 +38,19 @@
 			  	<li><%= link_to "Register", new_user_path%></li>
 			  	<li><%= link_to "Login", :login %> </li>
 				<% end %>
+		      <!-- <li class="has-dropdown">
+		        <a href="#">Right Button Dropdown</a>
+		        <ul class="dropdown">
+		          <li><a href="#">First link in dropdown</a></li>
+		        </ul>
+		      </li> -->
+		    </ul>
+
+		    <!-- Left Nav Section -->
+		    <ul class="left">
+		    	<li><%= link_to "About", application_about_path %></li> 
+				<li><%= link_to "Contact", application_contact_path %></li> 
+				<li><%= link_to "FAQ", application_faq_path %></li>
 		    </ul>
 		  </section>
 		</nav>
