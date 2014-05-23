@@ -3,25 +3,25 @@ $(document).ready(function () {
   $('#results').hide();
 
   answers = new Object();
+  emotional = new Object();
+  physical = new Object();
+
   $('.answers').change(function () {
     var answer = ($(this).attr('value'));
     var question = ($(this).attr('name'));
     answers[question] = answer;
-});
 
-  emotional = new Object();
-  $('.answers').change(function () {
-    var e_a = ($(this).attr('value'));
-    var e_q = ($('.emotional').attr('class'));
-    emotional[e_q] = e_a;
-});
+    if ( $(this).parent().hasClass("emotional") ) {
+    
+      emotional[question] = answer
+      
+    } else if (  $(this).parent().hasClass("physical") ) {
+      
+      physical[question] = answer
+    }
 
-  physical = new Object();
-  $('.answers').change(function () {
-    var p_a = ($(this).attr('value'));
-    var p_q = ($('.physical').attr('class'));
-    physical[p_q] = p_a;
-});
+
+  });
 
   var totalQuestions = $('.question').size();
   var currentQuestion = 0;
