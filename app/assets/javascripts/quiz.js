@@ -71,9 +71,7 @@ $(document).ready(function () {
       }
     });
 
-$('#next').click(function () {
-   currentQuestion = currentQuestion + 1;
+  // });
 
-  });
-
+});
 });
